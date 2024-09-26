@@ -32,12 +32,19 @@ export const Navbar = () => {
       </ul>
 
       <div className="lg:flexCenter hidden">
-        <Button 
-          type="button"
-          title="Login"
-          icon="/user.svg"
-          variant="btn_dark_blue"
-        />
+        <div className="flex space-x-2">
+          <Button 
+            type="button"
+            title="Login"
+            icon="/user.svg"
+            variant="btn_dark_blue"
+          />
+          <Button 
+            type="button"
+            title="Register"
+            variant="btn_dark_blue"
+          />
+        </div>
       </div>
 
       <div className="lg:hidden">
@@ -79,6 +86,13 @@ export const Navbar = () => {
               variant="btn_dark_blue"
             />
           </li>
+          <li className="my-1 transform hover:scale-105 duration-200">
+            <Button 
+              type="button"
+              title="Register"
+              variant="btn_dark_blue"
+            />
+          </li> 
         </ul>
       </div>
     </nav>
