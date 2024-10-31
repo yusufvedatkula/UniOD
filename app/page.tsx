@@ -1,18 +1,34 @@
 "use client";
 
+import "bootstrap/dist/css/bootstrap.min.css"; // Import bootstrap CSS
+import "../app/globals.css"
 
-const getData = async () => {
-  fetch('http://localhost:3000/api')
-  
-}
+import { useEffect, useState } from 'react';
+import { UniTable } from "@/components/UniTable";
+import { uniDataStructure } from '@/constants';
 
 export default function Home() {
+  const [uniData, setUniData] = useState<uniDataStructure[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const fetchUniData = async () => {
+      const response = await fetch('http://localhost:3000/api');
+      const data = await response.json();
+      setUniData(data);
+      setLoading(false);
+    };
+
+    fetchUniData();
+  }, []);
+
   return (
     <div>
-      Main PAGE
-      <button onClick={getData}>Scrape Guardian</button>
-      <a href="https://birmingham.ac.uk">University website</a>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <UniTable data={uniData} />
+      )}
     </div>
   );
 }
-

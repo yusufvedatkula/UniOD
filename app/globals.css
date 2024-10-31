@@ -52,3 +52,7 @@
         @apply text-[16px] font-[400];
       }
 }
+
+table{
+  width: fit-content;
+}

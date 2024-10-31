@@ -5,7 +5,6 @@ import { combineUniData } from '@/util/combineUniData'
 export async function GET() {
   try {
     const uniData = await combineUniData()
-    console.log(uniData)
     return NextResponse.json(uniData)
   } catch (error) {
     console.error('Error:', error)

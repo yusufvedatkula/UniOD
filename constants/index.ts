@@ -43,7 +43,7 @@ export interface OpenDayDatesDataStructure {
     website: string;
 }
 
-export interface uniData {
+export interface uniDataStructure {
     uniName: string;
     guardianData: {
         rank: number | null;
@@ -138,7 +138,6 @@ export const ValidUniversities = [
     "St Mary's University, Twickenham",
     "University of Hull",
     "University of Salford",
-    "Bristol, University of the West of England",
     "Glasgow Caledonian University",
     "Leeds Beckett University",
     "University of Sunderland",
@@ -180,7 +179,6 @@ export const ValidUniversities = [
     "London South Bank University",
     "Plymouth Marjon University",
     "Leeds Trinity University",
-    "University of Wales Trinity Saint David",
     "University of Westminster",
     "Royal Agricultural University",
     "University of Northampton",

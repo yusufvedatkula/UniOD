@@ -17,7 +17,7 @@ export const Navbar = () => {
 
   return (
     <nav className="flexBetween max-container 
-    padding-container relative z-30 py-4 bg-slate-200">
+    padding-container relative z-30 py-4 bg-slate-200 w-full">
       <h1 className="text-4xl font-bold">UniOD</h1>
       <ul className="hidden h-full gap-12 lg:flex">
         {NAV_LINKS.map((link) => (
