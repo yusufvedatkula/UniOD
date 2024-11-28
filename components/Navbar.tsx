@@ -33,17 +33,21 @@ export const Navbar = () => {
 
       <div className="lg:flexCenter hidden">
         <div className="flex space-x-2">
-          <Button 
-            type="button"
-            title="Login"
-            icon="/user.svg"
-            variant="btn_dark_blue"
-          />
-          <Button 
-            type="button"
-            title="Register"
-            variant="btn_dark_blue"
-          />
+        <Link href={"/login"}>
+            <Button 
+              type="button"
+              title="Login"
+              icon="/user.svg"
+              variant="btn_dark_blue"
+            />
+            </Link>
+         <Link href={"/register"}>
+              <Button 
+                type="button"
+                title="Register"
+                variant="btn_dark_blue"
+              />
+            </Link>
         </div>
       </div>
 
@@ -79,19 +83,24 @@ export const Navbar = () => {
             </li>
           ))}
           <li className="my-1 transform hover:scale-105 duration-200" >
+            <Link href={"/login"}>
             <Button 
               type="button"
               title="Login"
               icon="/user.svg"
               variant="btn_dark_blue"
             />
+            </Link>
           </li>
           <li className="my-1 transform hover:scale-105 duration-200">
-            <Button 
-              type="button"
-              title="Register"
-              variant="btn_dark_blue"
-            />
+            <Link href={"/register"}>
+              <Button 
+                type="button"
+                title="Register"
+                variant="btn_dark_blue"
+              />
+            </Link>
+            
           </li> 
         </ul>
       </div>
