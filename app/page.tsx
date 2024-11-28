@@ -7,13 +7,16 @@ import { useEffect, useState } from 'react';
 import { UniTable } from "@/components/UniTable";
 import { uniDataStructure } from '@/constants';
 
+
 export default function Home() {
   const [uniData, setUniData] = useState<uniDataStructure[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
+
+
   useEffect(() => {
     const fetchUniData = async () => {
-      const response = await fetch('http://localhost:3000/api');
+      const response = await fetch('api/getUniData');
       const data = await response.json();
       setUniData(data);
       setLoading(false);

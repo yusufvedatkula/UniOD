@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import "bootstrap/dist/css/bootstrap.min.css"; 
-
+import { AuthProvider } from "./Providers";
 
 export const metadata: Metadata = {
   title: "UniOD",
@@ -17,8 +17,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className='relative' data-theme="nord">
-        <Navbar />
-        {children}
+        <AuthProvider>
+          <Navbar />
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );
