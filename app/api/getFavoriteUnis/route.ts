@@ -22,7 +22,6 @@ export async function GET() {
         if (!user || !user.favUnis) {
             return NextResponse.json({ message: "No favorite universities found" }, { status: 404 });
         }
-        console.log(user.favUnis)
 
         // Return the list of favorite universities
         return NextResponse.json({ favorites: user.favUnis }, { status: 200 });

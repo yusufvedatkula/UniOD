@@ -11,6 +11,10 @@
     "test": "ts-node --esm --experimental-specifier-resolution=node -P tsconfig.node.json test/runScraper.ts"
   },
   "dependencies": {
+    "@internationalized/date": "^3.6.0",
+    "@nextui-org/date-input": "^2.1.4",
+    "@nextui-org/react": "^2.4.8",
+    "@react-aria/i18n": "^3.12.4",
     "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
     "cheerio": "^1.0.0",
@@ -18,6 +22,8 @@
     "next": "^14.2.13",
     "next-auth": "^4.24.10",
     "node-fetch": "^3.3.2",
+    "node-schedule": "^2.1.1",
+    "nodemailer": "^6.9.16",
     "preline": "^2.4.1",
     "react": "^18",
     "react-dom": "^18"
@@ -25,6 +31,8 @@
   "devDependencies": {
     "@types/node": "^20",
     "@types/node-fetch": "^2.6.11",
+    "@types/node-schedule": "^2.1.7",
+    "@types/nodemailer": "^6.4.17",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "daisyui": "^4.12.10",

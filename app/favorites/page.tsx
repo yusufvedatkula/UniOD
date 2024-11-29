@@ -7,6 +7,7 @@ import { uniDataStructure } from "@/constants";
 
 export default function FavoritesPage() {
     const [unis, setFavoriteUnis] = useState<uniDataStructure[]>([]);
+    const [loading, setLoading] = useState(true);
     const { data: session } = useSession();
 
     useEffect(() => {
@@ -21,19 +22,33 @@ export default function FavoritesPage() {
                 }
             } catch (error) {
                 console.error("Error fetching favorite universities:", error);
+            } finally {
+                setLoading(false);
             }
         };
 
         if (session?.user?.email) {
             fetchFavoriteUnis();
+        } else {
+            setLoading(false);
         }
     }, [session]);
 
-
     return (
         <div>
-            <h1>Favorite Universities</h1>
-            <UniTable data={unis} />
+            {loading ? (
+                <p>Loading...</p>
+            ) : session?.user?.email ? (
+                <div>
+                    <h1 style={{ textAlign: 'center' }}>Favorite Universities</h1>
+                    <UniTable data={unis} />
+                </div>
+                
+            ) : (
+                <div className="grid place-items-center m-10">
+                    <h1 className="text-2xl font-bold">You have to log in to use this feature</h1>
+                </div>
+            )}
         </div>
     );
 }
