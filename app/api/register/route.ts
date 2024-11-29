@@ -5,17 +5,10 @@ import User from "@/models/user";
 export async function POST(req: Request) {
     try {
         const {name, email, password} = await req.json()
-
-        console.log(name)
-        console.log(email)
-        console.log(password)
-
-        const favUnis = {uniName:"Oxford", rank:1, ucasCode:"OBX10"}
-
         await connectMongoDB()
         console.log("Connected to MongoDB")
 
-        await User.create({name, email, password, favUnis})
+        await User.create({name, email, password, favUnis:[]})
         console.log("User created successfully")
 
         return NextResponse.json({message:"user registered"}, {status:200})

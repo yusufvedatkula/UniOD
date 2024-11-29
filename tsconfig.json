@@ -24,6 +24,6 @@
     "outDir": "dist",    // Add this line
     "rootDir": "."       // Add this line
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "test/runScraper.js", "app/api/auth/[...nextauth]/route.ts", "app/Providers.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "test/runScraper.js", "app/api/auth/[...nextauth]/route.ts", "app/Providers.ts", "app/api/addFavoriteUni/route.js"],
   "exclude": ["node_modules"]
 }

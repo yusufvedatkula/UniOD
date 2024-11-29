@@ -15,7 +15,8 @@ const userSchema = new Schema(
       required: true,
     },
     favUnis: {
-        type: [Schema.Types.Mixed],
+        type: Array,
+        default: [],
         required: false,
     }
   },

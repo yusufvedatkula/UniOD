@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { uniDataStructure } from "@/constants"
+import { useSession } from 'next-auth/react';
 
 interface UniTableProps {
     data: uniDataStructure[];
@@ -8,12 +9,33 @@ interface UniTableProps {
 export const UniTable: React.FC<UniTableProps> = ({ data }) => {
     const [searchQuery, setSearchQuery] = useState('');
     const [filteredData, setFilteredData] = useState(data);
+    const [favoriteUni, setFavoriteUni] = useState('');
 
-    const handleSearch = () => {
-        const results = data.filter(uni => 
-            uni.uniName.toLowerCase().includes(searchQuery.toLowerCase())
-        );
-        setFilteredData(results);
+    const {data: session} = useSession()
+
+    function handleSearch() {
+        if (searchQuery == "") {
+            setFilteredData(data)
+        }else {
+            const results = data.filter(uni => 
+                uni.uniName.toLowerCase().includes(searchQuery.toLowerCase())
+            );
+            setFilteredData(results);
+        }
+    };
+
+    const addFavorite = async () => {
+        if (favoriteUni) {
+            const university = favoriteUni;
+            await fetch('/api/addFavoriteUni', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ university }),
+            });
+            setFavoriteUni('');
+        }
     };
 
     return (
@@ -28,6 +50,20 @@ export const UniTable: React.FC<UniTableProps> = ({ data }) => {
                 />
                 <button onClick={handleSearch} style={{ padding: '0.75rem 1rem', borderRadius: '0.5rem', backgroundColor: "InfoBackground"}}>Search</button>
             </div>
+
+            {session && (
+                <div style={{ display: 'inline-block', marginBottom: '1rem', marginLeft: '1rem'}}>
+                    <input
+                        type="text"
+                        placeholder="Add to Favorites"
+                        value={favoriteUni}
+                        onChange={(e) => setFavoriteUni(e.target.value)}
+                        style={{ marginRight: '1rem', padding: '0.75rem', borderRadius: '0.5rem', width: '200px' }}
+                    />
+                    <button onClick={addFavorite} style={{ padding: '0.75rem 1rem', borderRadius: '0.5rem', backgroundColor: "InfoBackground"}}>Add</button>
+                </div>
+            )}
+
             <div style={{ overflowX: 'auto', overflowY: 'auto', maxHeight: '60vh' }}>
                 <table className="table table-hover table-bordered border-dark thead-dark bg-slate-200" 
                 style={{ width: '100%', borderRadius: '0.5rem' }}>
