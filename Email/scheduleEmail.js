@@ -1,5 +1,4 @@
 import schedule from 'node-schedule';
-import pkg from 'nodemailer';
 
 import {transporter } from './email.ts'
 
@@ -7,7 +6,7 @@ export const scheduleEmail = (openDayDate, emailDetails) => {
   const scheduledDate = new Date(openDayDate);
   scheduledDate.setDate(scheduledDate.getDate() - 1); // Subtract one day
 
-  scheduledDate.setHours(17, 14, 0)
+  scheduledDate.setHours(14, 57, 0)
 
   // Use the `scheduleJob` method to schedule the job
   schedule.scheduleJob(scheduledDate, async () => {

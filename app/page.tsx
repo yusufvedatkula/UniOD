@@ -30,7 +30,7 @@ export default function Home() {
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <UniTable data={uniData} />
+        <UniTable data={uniData} addFavoriteUniEnabled={true}/>
       )}
     </div>
   );

@@ -1,10 +1,10 @@
 "use client"
 
-import {DateInput} from "@nextui-org/date-input";
+// import {DateInput} from "@nextui-org/date-input";
 import {CalendarDate} from "@internationalized/date";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
-
+import {Calendar} from "@nextui-org/react";
 
 export const OpenDayReminderForm = () => {
     const today = new CalendarDate(new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDate());
@@ -51,7 +51,7 @@ export const OpenDayReminderForm = () => {
     
     return (
         <div>
-            <div className="grid place-items-center m-10">
+            <div className="grid place-items-center m-2">
                 <div className="shadow-lg p-5 rounded-lg border-t-4 border-blue-950">
                 <h1 className="text-xl font-bold my-4">Open Day Reminder Form</h1>
         
@@ -72,44 +72,23 @@ export const OpenDayReminderForm = () => {
                     placeholder="University"
                     onChange={(e) => setUniversity(e.target.value)}
                     />
-                    
-                    <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
-                        <DateInput
-                            className="bg-gray-50 border
-                            border-gray-300 
-                            text-white text-sm rounded-lg 
-                            focus:ring-blue-500 
-                            focus:border-blue-500 block w-full p-2.5 
-                            dark:bg-gray-700
-                            dark:border-gray-600 
-                            dark:placeholder-white 
-                            dark:text-white 
-                            dark:focus:ring-blue-500 
-                            dark:focus:border-blue-500"
-                            label={"Open Day Date"} 
-                            isRequired
-                            defaultValue={
-                                new CalendarDate(new Date().getFullYear(), 
-                                new Date().getMonth() + 1, 
-                                new Date().getDate()
-                            )} 
-                            minValue={
-                                new CalendarDate(new Date().getFullYear(), 
-                                new Date().getMonth() + 1, 
-                                new Date().getDate())} 
-                            placeholderValue={new CalendarDate(1995, 11, 6)} 
-                            onChange={(date) => {
-                                setOpenDayDate(date.toString());
-                                setError('');
-                            }}
+                    <div className="flex gap-x-4">
+                        <Calendar 
+                        aria-label="Date (No Selection)" 
+                        onChange={(date) => {
+                            setOpenDayDate(date.toString());
+                            setError('');
+                        }}
                         />
                     </div>
-                    <button className="bg-blue-900 
-                    text-white font-bold 
-                    cursor-pointer border-solid border-black border-0 px-6 py-2 
-                    rounded-md hover:bg-blue-700 
-                    transition-all duration-300 ease-in-out">
-                    Set Reminder
+                    
+                    <button type="submit" 
+                        className="bg-blue-900 
+                        text-white font-bold 
+                        cursor-pointer border-solid border-black border-0 px-6 py-2 
+                        rounded-md hover:bg-blue-700 
+                        transition-all duration-300 ease-in-out">
+                        Set Reminder
                     </button>
 
                     {error && (

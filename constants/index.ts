@@ -2,7 +2,7 @@ export const NAV_LINKS = [
     { href: '/', key: 'home', label: 'Home' },
     { href: '/OpenDayReminderSystem', key: 'open_day_reminder', label: 'Open Day Reminder' },
     { href: '/favorites', key: 'favourites', label: 'Favorites' },
-    { href: '/', key: 'my_account', label: 'My Account' },
+    { href: '/myAccount', key: 'my_account', label: 'My Account' },
 ];
 
 export interface guardianDataStructure {

@@ -4,9 +4,10 @@ import { useSession } from 'next-auth/react';
 
 interface UniTableProps {
     data: uniDataStructure[];
+    addFavoriteUniEnabled: boolean;
   }
 
-export const UniTable: React.FC<UniTableProps> = ({ data }) => {
+export const UniTable: React.FC<UniTableProps> = ({ data, addFavoriteUniEnabled }) => {
     const [searchQuery, setSearchQuery] = useState('');
     const [filteredData, setFilteredData] = useState(data);
     const [favoriteUni, setFavoriteUni] = useState('');
@@ -51,7 +52,7 @@ export const UniTable: React.FC<UniTableProps> = ({ data }) => {
                 <button onClick={handleSearch} style={{ padding: '0.75rem 1rem', borderRadius: '0.5rem', backgroundColor: "InfoBackground"}}>Search</button>
             </div>
 
-            {session && (
+            {addFavoriteUniEnabled && session && (
                 <div style={{ display: 'inline-block', marginBottom: '1rem', marginLeft: '1rem'}}>
                     <input
                         type="text"

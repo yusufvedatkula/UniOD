@@ -41,7 +41,7 @@ export default function FavoritesPage() {
             ) : session?.user?.email ? (
                 <div>
                     <h1 style={{ textAlign: 'center' }}>Favorite Universities</h1>
-                    <UniTable data={unis} />
+                    <UniTable data={unis} addFavoriteUniEnabled={false} />
                 </div>
                 
             ) : (
