@@ -21,9 +21,9 @@ export default function HeroPage() {
                 Explore top universities, compare their rankings, 
                 find the best fit for your academic journey, 
                 and stay updated with our open day reminder system. 
-                Don{'`'}t forget to check your favorites page for quick access to your top choices.
+                Don{"'"}t forget to check your favorites page for quick access to your top choices.
                 </p>
-                <button className="btn btn-info" onClick={() => router.push('/home')}>Get Started</button>
+                <button className="btn btn-neutral bg-white text-black hover:text-white" onClick={() => router.push('/home')}>Get Started</button>
                 </div>
             </div>
         </div>

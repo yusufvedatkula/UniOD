@@ -4,11 +4,12 @@ import React from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
-
+import { useRouter } from "next/navigation";
 import { NAV_LINKS } from "@/constants";
 
 export const NavbarComponent = () => {
   const { data: session } = useSession();
+  const router = useRouter()
 
   const handleLogout = () => signOut();
 
@@ -60,7 +61,13 @@ export const NavbarComponent = () => {
       <div className="navbar-end">
         {session ? (
           <>
-            <span className="mr-4 text-sm font-medium text-slate-200">{session?.user?.name}</span>
+            <span className="mr-4 text-sm font-medium text-slate-200" >
+              <div className="avatar online placeholder"  style={{cursor:"pointer"}}>
+                <div className="bg-neutral text-white w-12 rounded-full">
+                  <span onClick={() => router.push('/myAccount')} style={{cursor:"pointer"}}>{session?.user?.name?.charAt(0)}</span>
+                </div>
+              </div>
+            </span>
             <button
               className="btn btn-error"
               onClick={handleLogout}
