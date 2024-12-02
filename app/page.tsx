@@ -1,37 +1,32 @@
-"use client";
+"use client"
 
-import "bootstrap/dist/css/bootstrap.min.css"; // Import bootstrap CSS
-import "../app/globals.css"
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
-import { useEffect, useState } from 'react';
-import { UniTable } from "@/components/UniTable";
-import { uniDataStructure } from '@/constants';
-
-
-export default function Home() {
-  const [uniData, setUniData] = useState<uniDataStructure[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-
-
+export default function HeroPage() {
+  const router = useRouter();
 
   useEffect(() => {
-    const fetchUniData = async () => {
-      const response = await fetch('api/getUniData');
-      const data = await response.json();
-      setUniData(data);
-      setLoading(false);
-    };
-
-    fetchUniData();
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
   }, []);
 
   return (
     <div>
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        <UniTable data={uniData} addFavoriteUniEnabled={true}/>
-      )}
+        <div className="hero bg-base-100 min-h-screen text-white">
+            <div className="hero-content text-center">
+                <div className="max-w-md">
+                <h1 className="text-5xl font-bold text-white">Welcome to UniOD</h1>
+                <p className="py-6 text-white">
+                Unlock your university search with UniOD. 
+                Explore top universities, compare their rankings, 
+                find the best fit for your academic journey, 
+                and stay updated with our open day reminder system. 
+                Don{'`'}t forget to check your favorites page for quick access to your top choices.
+                </p>
+                <button className="btn btn-info" onClick={() => router.push('/home')}>Get Started</button>
+                </div>
+            </div>
+        </div>
     </div>
   );
 }

@@ -21,12 +21,12 @@ export async function POST(req) {
     try {
         await connectMongoDB()
         const user = await User.findOne({email: session.user.email})
-        const {university, openDayDate} = await req.json()
+        const {university, openDayDate, time} = await req.json()
         const foundUniversity = uniData.find(uni => uni.uniName === university);
 
         const mailOptions = await convertEmail(openDayDate, university, user.email, foundUniversity)
 
-        scheduleEmail([openDayDate], mailOptions)
+        scheduleEmail([openDayDate], mailOptions, time)
 
         return NextResponse.json({message:"university and open day date recieved"}, {status:200})
     } catch (error) {

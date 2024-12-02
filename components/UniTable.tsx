@@ -40,48 +40,49 @@ export const UniTable: React.FC<UniTableProps> = ({ data, addFavoriteUniEnabled 
     };
 
     return (
-        <div style={{ margin: '3rem', textAlign: 'center' }}>
-            <div style={{ display: 'inline-block', marginBottom: '1rem' }}>
-                <input
-                    type="text"
-                    placeholder="Search by University Name"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    style={{ marginRight: '1rem', padding: '0.75rem', borderRadius: '0.5rem', width: '500px' }}
-                />
-                <button onClick={handleSearch} style={{ padding: '0.75rem 1rem', borderRadius: '0.5rem', backgroundColor: "InfoBackground"}}>Search</button>
+        <div style={{ margin: '3rem', textAlign: 'center', borderRadius:"1rem"}} >
+            <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+                <div style={{ display: 'flex', justifyContent:"space-around",marginBottom: '1rem', marginTop:"1rem"}} className=''>
+                        <input type="text" className="input input-bordered" 
+                        placeholder="Search by University Name" value={searchQuery}
+                        style={{ marginRight: '1rem', width: '300px' }}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        />
+                    <button onClick={handleSearch} className='btn btn-neutral'>Search</button>
+                </div>
             </div>
 
             {addFavoriteUniEnabled && session && (
-                <div style={{ display: 'inline-block', marginBottom: '1rem', marginLeft: '1rem'}}>
+                <div style={{ display: '', marginBottom: '1rem', marginLeft: '1rem'}}>
                     <input
                         type="text"
                         placeholder="Add to Favorites"
+                        className='input '
                         value={favoriteUni}
                         onChange={(e) => setFavoriteUni(e.target.value)}
-                        style={{ marginRight: '1rem', padding: '0.75rem', borderRadius: '0.5rem', width: '200px' }}
+                        style={{ marginRight: '1rem', width: '200px' }}
                     />
-                    <button onClick={addFavorite} style={{ padding: '0.75rem 1rem', borderRadius: '0.5rem', backgroundColor: "InfoBackground"}}>Add</button>
+                    <button onClick={addFavorite} className='btn btn-neutral'>Add</button>
                 </div>
             )}
 
             <div style={{ overflowX: 'auto', overflowY: 'auto', maxHeight: '60vh' }}>
-                <table className="table table-hover table-bordered border-dark thead-dark bg-slate-200" 
+                <table className="table" 
                 style={{ width: '100%', borderRadius: '0.5rem' }}>
-                    <thead className="table-dark">
+                    <thead>
                         <tr>
-                            <th>University</th>
-                            <th>CUG rank</th>
-                            <th>Guardian rank</th>
-                            <th>Open Day Dates</th>
-                            <th>CUG score</th>
-                            <th>Guardian score</th>
-                            <th>Satisfied with teaching</th>
-                            <th>Career After 15 months</th>
-                            <th>Student Satisfaction</th>
-                            <th>Research Quality</th>
-                            <th>Graduate Prospects</th>
-                            <th>Website</th>
+                            <th className='text-xl text-slate-300'>University</th>
+                            <th className='text-xl text-slate-300'>CUG rank</th>
+                            <th className='text-xl text-slate-300'>Guardian rank</th>
+                            <th className='text-xl text-slate-300'>Open Day Dates</th>
+                            <th className='text-xl text-slate-300'>CUG score</th>
+                            <th className='text-xl text-slate-300'>Guardian score</th>
+                            <th className='text-xl text-slate-300'>Satisfied with teaching</th>
+                            <th className='text-xl text-slate-300'>Career After 15 months</th>
+                            <th className='text-xl text-slate-300'>Student Satisfaction</th>
+                            <th className='text-xl text-slate-300'>Research Quality</th>
+                            <th className='text-xl text-slate-300'> Graduate Prospects</th>
+                            <th className='text-xl text-slate-300'>Website</th>
                         </tr>
                     </thead>
                     <tbody>

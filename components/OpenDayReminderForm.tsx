@@ -6,11 +6,15 @@ import { useState } from "react";
 import { useSession } from "next-auth/react";
 import {Calendar} from "@nextui-org/react";
 
+import {TimeInput} from "@nextui-org/react";
+import {Time} from "@internationalized/date";
+
 export const OpenDayReminderForm = () => {
     const today = new CalendarDate(new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDate());
     const [university, setUniversity] = useState('')
     const [openDayDate, setOpenDayDate] = useState('')
     const [error, setError] = useState('')
+    const [time, setTime] = useState('')
 
     const {data: session} = useSession()
 
@@ -41,33 +45,26 @@ export const OpenDayReminderForm = () => {
                 "Content-Type":"application/json"
             },
             body: JSON.stringify({
-                university, openDayDate
+                university, openDayDate, time
             })
         });
 
         setUniversity('');
         setOpenDayDate('');
+        setTime('');
+        
+        window.location.reload();
     }
     
     return (
         <div>
-            <div className="grid place-items-center m-2">
-                <div className="shadow-lg p-5 rounded-lg border-t-4 border-blue-950">
-                <h1 className="text-xl font-bold my-4">Open Day Reminder Form</h1>
+            <div className="grid place-items-center m-2" >
+                <div className="shadow-lg pb-5 pl-10 pr-10 rounded-lg border-t-4 border-warning" style={{backgroundColor:"#222831"}}>
+                <h1 className="text-xl font-bold my-3 text-slate-200">Open Day Reminder Form</h1>
         
-                <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                <form onSubmit={handleSubmit} className="flex flex-col gap-3">
                     <input
-                    className="bg-gray-50 border
-                    border-gray-300 
-                    text-white text-sm rounded-lg 
-                    focus:ring-blue-500 
-                    focus:border-blue-500 block w-full p-2.5 
-                    dark:bg-gray-700
-                    dark:border-gray-600 
-                    dark:placeholder-white 
-                    dark:text-white 
-                    dark:focus:ring-blue-500 
-                    dark:focus:border-blue-500"
+                    className="input input-bordered border-warning text-slate-200"
                     type="text"
                     placeholder="University"
                     onChange={(e) => setUniversity(e.target.value)}
@@ -79,15 +76,19 @@ export const OpenDayReminderForm = () => {
                             setOpenDayDate(date.toString());
                             setError('');
                         }}
+                        color="warning"
                         />
                     </div>
-                    
+                    <TimeInput 
+                        defaultValue={new Time(10)}
+                        hourCycle={24}
+                        onChange={(e) => {
+                            setTime(e.toString())
+                            setError('')
+                        } }
+                    />
                     <button type="submit" 
-                        className="bg-blue-900 
-                        text-white font-bold 
-                        cursor-pointer border-solid border-black border-0 px-6 py-2 
-                        rounded-md hover:bg-blue-700 
-                        transition-all duration-300 ease-in-out">
+                        className="btn btn-warning">
                         Set Reminder
                     </button>
 

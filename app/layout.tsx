@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Navbar } from "@/components/Navbar";
-import "bootstrap/dist/css/bootstrap.min.css"; 
+import { NavbarComponent } from "@/components/Navbar";
+
 import { AuthProvider } from "./Providers";
 
 export const metadata: Metadata = {
@@ -16,9 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className='relative' data-theme="nord">
+      <body className='relative'>
         <AuthProvider>
-          <Navbar />
+          <NavbarComponent />
           {children}
         </AuthProvider>
       </body>
