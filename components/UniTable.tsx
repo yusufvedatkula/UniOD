@@ -42,13 +42,13 @@ export const UniTable: React.FC<UniTableProps> = ({ data, addFavoriteUniEnabled 
     return (
         <div style={{ margin: '3rem', textAlign: 'center', borderRadius:"1rem"}} >
             <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-                <div style={{ display: 'flex', justifyContent:"space-around",marginBottom: '1rem', marginTop:"1rem"}} className=''>
-                        <input type="text" className="input input-bordered" 
+                <div style={{marginBottom: '1rem', marginTop:"1rem"}} className=''>
+                        <input type="text" className="input input-bordered text-slate-100" 
                         placeholder="Search by University Name" value={searchQuery}
                         style={{ marginRight: '1rem', width: '300px' }}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         />
-                    <button onClick={handleSearch} className='btn btn-neutral'>Search</button>
+                    <button style={{marginBottom: '0.6rem', marginTop:"0.6rem"}} onClick={handleSearch} className='btn btn-neutral bg-white text-black hover:bg-neutral hover:text-slate-100'>Search</button>
                 </div>
             </div>
 
@@ -62,7 +62,7 @@ export const UniTable: React.FC<UniTableProps> = ({ data, addFavoriteUniEnabled 
                         onChange={(e) => setFavoriteUni(e.target.value)}
                         style={{ marginRight: '1rem', width: '200px' }}
                     />
-                    <button onClick={addFavorite} className='btn btn-neutral'>Add</button>
+                    <button onClick={addFavorite} className='btn btn-neutral bg-white text-black hover:bg-neutral hover:text-slate-100'>Add</button>
                 </div>
             )}
 
@@ -71,36 +71,36 @@ export const UniTable: React.FC<UniTableProps> = ({ data, addFavoriteUniEnabled 
                 style={{ width: '100%', borderRadius: '0.5rem' }}>
                     <thead>
                         <tr>
-                            <th className='text-xl text-slate-300'>University</th>
-                            <th className='text-xl text-slate-300'>CUG rank</th>
-                            <th className='text-xl text-slate-300'>Guardian rank</th>
-                            <th className='text-xl text-slate-300'>Open Day Dates</th>
-                            <th className='text-xl text-slate-300'>CUG score</th>
-                            <th className='text-xl text-slate-300'>Guardian score</th>
-                            <th className='text-xl text-slate-300'>Satisfied with teaching</th>
-                            <th className='text-xl text-slate-300'>Career After 15 months</th>
-                            <th className='text-xl text-slate-300'>Student Satisfaction</th>
-                            <th className='text-xl text-slate-300'>Research Quality</th>
-                            <th className='text-xl text-slate-300'> Graduate Prospects</th>
-                            <th className='text-xl text-slate-300'>Website</th>
+                            <th className='text-xl text-slate-50'>University</th>
+                            <th className='text-xl text-slate-50'>CUG rank</th>
+                            <th className='text-xl text-slate-50'>Guardian rank</th>
+                            <th className='text-xl text-slate-50'>Open Day Dates</th>
+                            <th className='text-xl text-slate-50'>CUG score</th>
+                            <th className='text-xl text-slate-50'>Guardian score</th>
+                            <th className='text-xl text-slate-50'>Satisfied with teaching</th>
+                            <th className='text-xl text-slate-50'>Career After 15 months</th>
+                            <th className='text-xl text-slate-50'>Student Satisfaction</th>
+                            <th className='text-xl text-slate-50'>Research Quality</th>
+                            <th className='text-xl text-slate-50'> Graduate Prospects</th>
+                            <th className='text-xl text-slate-50'>Website</th>
                         </tr>
                     </thead>
                     <tbody>
                         {filteredData.length > 0 ? (
                             filteredData.map(uni => (
                                 <tr key={uni.uniName}>
-                                    <td>{uni.uniName}</td>
-                                    <td>{uni.CompleteUniversityGuideData?.rank}</td>
-                                    <td>{uni.guardianData?.rank}</td>
-                                    <td>{uni.openDayDate}</td>
-                                    <td>{uni.CompleteUniversityGuideData?.score}</td>
-                                    <td>{uni.guardianData?.score}</td>
-                                    <td>{uni.guardianData?.satisfiedWithTeaching}</td>
-                                    <td>{uni.guardianData?.careerAfter15Months}</td>
-                                    <td>{uni.CompleteUniversityGuideData?.studentSatisfaction}</td>
-                                    <td>{uni.CompleteUniversityGuideData?.researchQuailty}</td>
-                                    <td>{uni.CompleteUniversityGuideData?.graduateProspects}</td>
-                                    <td><a href={uni.website || undefined}>{uni.website}</a></td>
+                                    <td className='text-slate-200'>{uni.uniName}</td>
+                                    <td className='text-slate-200'>{uni.CompleteUniversityGuideData?.rank}</td>
+                                    <td className='text-slate-200'>{uni.guardianData?.rank}</td>
+                                    <td className='text-slate-200'>{uni.openDayDate}</td>
+                                    <td className='text-slate-200'>{uni.CompleteUniversityGuideData?.score}</td>
+                                    <td className='text-slate-200'>{uni.guardianData?.score}</td>
+                                    <td className='text-slate-200'>{uni.guardianData?.satisfiedWithTeaching}</td>
+                                    <td className='text-slate-200'>{uni.guardianData?.careerAfter15Months}</td>
+                                    <td className='text-slate-200'>{uni.CompleteUniversityGuideData?.studentSatisfaction}</td>
+                                    <td className='text-slate-200'>{uni.CompleteUniversityGuideData?.researchQuailty}</td>
+                                    <td className='text-slate-200'>{uni.CompleteUniversityGuideData?.graduateProspects}</td>
+                                    <td className='text-slate-200'><a href={uni.website || undefined}>{uni.website}</a></td>
                                 </tr>
                             ))
                         ) : (

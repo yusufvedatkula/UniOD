@@ -62,7 +62,7 @@ export default function RegisterForm() {
     }
 
     return (
-        <div className="grid place-items-center m-10  " >
+        <div className="grid place-items-center m-16 " >
             <div className="shadow-lg p-10 rounded-xl border-t-4 border-info" style={{textAlign:"center", backgroundColor:"#222831"}}>
             <h1 className="text-xl font-bold my-4 text-white">Register</h1>
     
@@ -77,7 +77,7 @@ export default function RegisterForm() {
                     d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
                 </svg>
                 <input
-                className="grow"
+                className="grow text-white"
                 type="text"
                 placeholder="Full Name"
                 onChange={(e) => setName(e.target.value)}
@@ -95,7 +95,7 @@ export default function RegisterForm() {
                         d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
                     </svg>
                     <input
-                    className="grow"
+                    className="grow text-white"
                     type="text"
                     placeholder="Email"
                     onChange={(e) => setEmail(e.target.value)}
@@ -113,7 +113,7 @@ export default function RegisterForm() {
                         clip-rule="evenodd" />
                     </svg>
                     <input
-                        className="grow"
+                        className="grow text-white"
                         type="password"
                         placeholder="Password"
                         onChange={(e) => setPassword(e.target.value)}
@@ -130,7 +130,7 @@ export default function RegisterForm() {
                 )}
     
                 <Link className="text-sm mt-3 text-right" href={"/login"}>
-                Already have an account? <span className="underline">Login</span>
+                Already have an account? <span className="text-accent underline">Sign In</span>
                 </Link>
             </form>
             </div>

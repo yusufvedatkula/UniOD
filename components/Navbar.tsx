@@ -39,20 +39,38 @@ export const NavbarComponent = () => {
           </button>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-md dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-60 p-2 shadow"
           >
             {NAV_LINKS.map((link) => (
               <li key={link.key}>
                 <Link href={link.href} className="text-white">{link.label}</Link>
               </li>
             ))}
+          <br />
+          {session ? (
+            <>
+              <button
+                className="btn btn-error"
+                onClick={handleLogout}>
+                Sign Out
+              </button>
+            </>
+          ) : (
+            <>
+              <button className="btn btn-info">
+                <Link href="/register">
+                  Sign Up
+                </Link>
+              </button>
+            </>
+          )}
           </ul>
         </div>
       </div>
 
       {/* Center: Brand */}
       <div className="navbar-center">
-        <Link href="/" className="btn btn-ghost text-4xl text-white">
+        <Link href="/" className="btn btn-ghost text-5xl text-white">
           UniOD
         </Link>
       </div>
@@ -68,21 +86,19 @@ export const NavbarComponent = () => {
                 </div>
               </div>
             </span>
-            <button
-              className="btn btn-error"
-              onClick={handleLogout}
-            >
-              Sign Out
-            </button>
           </>
         ) : (
           <>
             <Link href="/login">
-              <button className="btn btn-accent mr-2">Login</button>
-            </Link>
-            <Link href="/register">
-              <button className="btn btn-info">Register</button>
-            </Link>
+            
+              <button className="btn btn-accent mr-2 py-3 px-4 inline-flex items-center gap-x-2 text-sm">
+                Sign In
+                <svg className="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </button>
+            </Link> 
           </>
         )}
       </div>

@@ -23,7 +23,7 @@ export const LoginForm = () => {
       });
 
       if (res?.error) {
-        setError("Invalid email or password");
+        setError("Invalid email or password. Try Again!");
         return;
       }
 
@@ -35,9 +35,9 @@ export const LoginForm = () => {
   }
 
     return(
-        <div className="grid place-items-center m-10">
+        <div className="grid place-items-center m-16">
         <div className=" p-10 rounded-xl border-t-4 border-accent" style={{backgroundColor:"#222831"}}>
-          <h1 className="text-xl font-bold my-4 text-white">Login</h1>
+          <h1 className="text-xl font-bold my-4 text-white">Sign in to your account</h1>
   
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <label className="input input-bordered flex items-center gap-2">
@@ -52,7 +52,7 @@ export const LoginForm = () => {
                 d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
             </svg>
             <input
-            className="grow"
+            className="grow text-white"
               type="text"
               placeholder="Email"
               onChange={(e) => setEmail(e.target.value)}
@@ -70,14 +70,14 @@ export const LoginForm = () => {
                   clip-rule="evenodd" />
               </svg>
               <input
-                className="grow"
+                className="grow text-white"
                 type="password"
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
               />
             </label>
             <button className="btn btn-accent">
-              Login
+              Sign In
             </button>
 
             {error && (
@@ -87,7 +87,7 @@ export const LoginForm = () => {
           )}
   
             <Link className="text-sm mt-3 text-right" href={"/register"}>
-                Dont have an account? <span className="underline">Register</span>
+                Dont have an account? <span className="text-info underline">Sign Up</span>
             </Link>
           </form>
         </div>
