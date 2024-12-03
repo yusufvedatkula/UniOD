@@ -64,7 +64,7 @@ export default function RegisterForm() {
     return (
         <div className="grid place-items-center m-16 " >
             <div className="shadow-lg p-10 rounded-xl border-t-4 border-info" style={{textAlign:"center", backgroundColor:"#222831"}}>
-            <h1 className="text-xl font-bold my-4 text-white">Register</h1>
+            <h1 className="text-xl font-bold my-4 text-white">Create your UniOD account</h1>
     
             <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
             <label className="input input-bordered flex items-center gap-2">

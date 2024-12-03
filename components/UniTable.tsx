@@ -5,12 +5,14 @@ import { useSession } from 'next-auth/react';
 interface UniTableProps {
     data: uniDataStructure[];
     addFavoriteUniEnabled: boolean;
+    removeFavoriteUniEnabled: boolean;
   }
 
-export const UniTable: React.FC<UniTableProps> = ({ data, addFavoriteUniEnabled }) => {
+export const UniTable: React.FC<UniTableProps> = ({ data, addFavoriteUniEnabled, removeFavoriteUniEnabled }) => {
     const [searchQuery, setSearchQuery] = useState('');
     const [filteredData, setFilteredData] = useState(data);
     const [favoriteUni, setFavoriteUni] = useState('');
+    const [uniToRemove, setUniToRemove] = useState('')
 
     const {data: session} = useSession()
 
@@ -28,7 +30,7 @@ export const UniTable: React.FC<UniTableProps> = ({ data, addFavoriteUniEnabled 
     const addFavorite = async () => {
         if (favoriteUni) {
             const university = favoriteUni;
-            await fetch('/api/addFavoriteUni', {
+             await fetch('/api/addFavoriteUni', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -38,6 +40,25 @@ export const UniTable: React.FC<UniTableProps> = ({ data, addFavoriteUniEnabled 
             setFavoriteUni('');
         }
     };
+
+    const RemoveFavoriteUni = async () => {
+        if (uniToRemove) {
+            const res = await fetch('api/removeFavoriteUni', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ uniToRemove }),
+            })
+            if (res.ok) {
+                window.location.reload();
+                setUniToRemove('')
+            } else {
+                console.error('Failed to add university to favorites');
+            }
+
+        }
+    }
 
     return (
         <div style={{ margin: '3rem', textAlign: 'center', borderRadius:"1rem"}} >
@@ -60,10 +81,24 @@ export const UniTable: React.FC<UniTableProps> = ({ data, addFavoriteUniEnabled 
                         className='input '
                         value={favoriteUni}
                         onChange={(e) => setFavoriteUni(e.target.value)}
-                        style={{ marginRight: '1rem', width: '200px' }}
+                        style={{ marginRight: '1rem', width: '300px' }}
                     />
                     <button onClick={addFavorite} className='btn btn-neutral bg-white text-black hover:bg-neutral hover:text-slate-100'>Add</button>
                 </div>
+            )}
+
+            {removeFavoriteUniEnabled && session && (
+                 <div style={{ display: '', marginBottom: '1rem', marginLeft: '1rem'}}>
+                 <input
+                     type="text"
+                     placeholder="Remove from Favorites"
+                     className='input input-bordered'
+                     value={uniToRemove}
+                     onChange={(e) => setUniToRemove(e.target.value)}
+                     style={{ marginRight: '1rem', width: '300px' }}
+                 />
+                 <button onClick={RemoveFavoriteUni} className='btn btn-error'>Remove</button>
+             </div>
             )}
 
             <div style={{ overflowX: 'auto', overflowY: 'auto', maxHeight: '60vh' }}>
