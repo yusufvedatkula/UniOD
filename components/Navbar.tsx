@@ -39,7 +39,8 @@ export const NavbarComponent = () => {
           </button>
           <ul
             tabIndex={0}
-            className="menu menu-md  dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-60 p-2 shadow"
+            className="menu menu-md  dropdown-content 
+            bg-base-100 rounded-box z-[1] mt-3 w-60 p-2 shadow"
           >
             {NAV_LINKS.map((link) => (
               <li key={link.key}>
@@ -57,10 +58,8 @@ export const NavbarComponent = () => {
             </>
           ) : (
             <>
-              <button className="btn btn-info">
-                <Link href="/register">
+              <button className="btn btn-info" onClick={() => router.push('/register')}>
                   Sign Up
-                </Link>
               </button>
             </>
           )}
@@ -96,7 +95,9 @@ export const NavbarComponent = () => {
             
               <button className="btn btn-accent mr-2 py-3 px-4 inline-flex items-center gap-x-2 text-sm">
                 Sign In
-                <svg className="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg className="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" 
+                height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" 
+                strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h14"></path>
                   <path d="m12 5 7 7-7 7"></path>
                 </svg>

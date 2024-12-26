@@ -69,7 +69,13 @@ export const UniTable: React.FC<UniTableProps> = ({ data, addFavoriteUniEnabled,
                         style={{ marginRight: '1rem', width: '300px' }}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         />
-                    <button style={{marginBottom: '0.6rem', marginTop:"0.6rem"}} onClick={handleSearch} className='btn btn-neutral bg-white text-black hover:bg-neutral hover:text-slate-100'>Search</button>
+                    <button style={{marginBottom: '0.6rem', marginTop:"0.6rem"}} 
+                    onClick={handleSearch} 
+                    className='btn btn-neutral bg-white
+                     text-black hover:bg-neutral 
+                     hover:text-slate-100'>
+                        Search
+                    </button>
                 </div>
             </div>
 
@@ -78,7 +84,7 @@ export const UniTable: React.FC<UniTableProps> = ({ data, addFavoriteUniEnabled,
                     <input
                         type="text"
                         placeholder="Add to Favorites"
-                        className='input '
+                        className='input input-bordered'
                         value={favoriteUni}
                         onChange={(e) => setFavoriteUni(e.target.value)}
                         style={{ marginRight: '1rem', width: '300px' }}
@@ -100,6 +106,7 @@ export const UniTable: React.FC<UniTableProps> = ({ data, addFavoriteUniEnabled,
                  <button onClick={RemoveFavoriteUni} className='btn btn-error'>Remove</button>
              </div>
             )}
+            
 
             <div style={{ overflowX: 'auto', overflowY: 'auto', maxHeight: '60vh' }}>
                 <table className="table" 

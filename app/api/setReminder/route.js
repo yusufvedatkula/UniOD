@@ -24,11 +24,11 @@ export async function POST(req) {
         const {university, openDayDate, time} = await req.json()
         const foundUniversity = uniData.find(uni => uni.uniName === university);
 
-        const mailOptions = await convertEmail(openDayDate, university, user.email, foundUniversity)
+        const mailOptions = await convertEmail(openDayDate, university, user.email, foundUniversity, session?.user?.name)
 
         scheduleEmail([openDayDate], mailOptions, time)
 
-        return NextResponse.json({message:"university and open day date recieved"}, {status:200})
+        return NextResponse.json({message:"university and open day date recieved and email scheduled"}, {status:200})
     } catch (error) {
         console.log(error)
         return NextResponse.json({message:"error occured"},{status:500})

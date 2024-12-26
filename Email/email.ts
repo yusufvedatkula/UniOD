@@ -1,15 +1,13 @@
 import pkg from 'nodemailer';
 const nodemailer = pkg;
 
-
 import { uniDataStructure } from "@/constants";
 
-
-function convertEmail(openDayDate: string, uni_name: string, email: string, uniData:uniDataStructure) {
+function convertEmail(openDayDate: string, uni_name: string, email: string, uniData:uniDataStructure, user_name:string) {
     const mailOptions = {
         from: email,
         to: 'yvk1710@gmail.com',
-        subject: `UniOD: Don't forget  your ${uni_name} Open Day!`,
+        subject: `UniOD: Hey ${user_name} Don't forget  your ${uni_name} Open Day!`,
         text: `${uni_name} open day is on ${openDayDate}
         Here is the data about ${uni_name}:
         CUG RANK: ${uniData.CompleteUniversityGuideData?.rank}

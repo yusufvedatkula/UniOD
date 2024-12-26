@@ -14,7 +14,7 @@ export default function AccountPage() {
   if (!session) {
     return (
       <div className="grid place-items-center m-10">
-        <h1 className="text-2xl font-bold">You have to Sign In to access this page</h1>
+        <h1 className="text-2xl font-bold">You have to SIGN IN to access this page</h1>
       </div>
     );
   }
@@ -99,13 +99,21 @@ export default function AccountPage() {
             </button>
 
             {error && (
-              <div className="bg-red-500 text-white w-fit text-sm py-1 px-3 rounded-md mt-2">
+              <div className="bg-red-500
+               text-white 
+               w-fit 
+               text-sm py-1 
+               px-3 
+               rounded-md mt-2">
                 {error}
               </div>
             )}
 
             {success && (
-              <div className="bg-green-500 text-white w-fit text-sm py-1 px-3 rounded-md mt-2">
+              <div className="bg-green-500 
+              text-white w-fit 
+              text-sm py-1 px-3 
+              rounded-md mt-2">
                 {success}
               </div>
             )}

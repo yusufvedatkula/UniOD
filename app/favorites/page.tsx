@@ -46,7 +46,7 @@ export default function FavoritesPage() {
                 
             ) : (
                 <div className="grid place-items-center m-10">
-                    <h1 className="text-2xl font-bold">You have to log in to use this feature</h1>
+                    <h1 className="text-2xl font-bold">You have to SIGN IN to use this feature</h1>
                 </div>
             )}
         </div>

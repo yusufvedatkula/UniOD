@@ -32,4 +32,5 @@ const config: Config = {
     require('daisyui')
   ],
 };
+
 export default config;

@@ -22,7 +22,7 @@ export const OpenDayReminderForm = () => {
     if (!session) {
         return (
             <div className="grid place-items-center m-10">
-                <h1 className="text-2xl font-bold">You have to log in to use Open Day Reminder System</h1>
+                <h1 className="text-2xl font-bold">You have to SIGN IN to use Open Day Reminder System</h1>
             </div>
         );
     }
@@ -59,8 +59,12 @@ export const OpenDayReminderForm = () => {
     return (
         <div>
             <div className="grid place-items-center m-2" >
-                <div className="shadow-lg pb-5 pl-10 pr-10 rounded-lg border-t-4 border-warning" style={{backgroundColor:"#222831"}}>
-                <h1 className="text-xl font-bold my-3 text-slate-200">Open Day Reminder Form</h1>
+                <div className="shadow-lg pb-5 pl-10 pr-10 
+                rounded-lg border-t-4 border-warning" 
+                style={{backgroundColor:"#222831"}}>
+                <h1 className="text-xl font-bold my-3 text-slate-200">
+                    Open Day Reminder Form
+                </h1>
         
                 <form onSubmit={handleSubmit} className="flex flex-col gap-3">
                     <input

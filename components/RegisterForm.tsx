@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { validateEmail } from "@/constants";
 
 export default function RegisterForm() {
 
@@ -16,48 +17,50 @@ export default function RegisterForm() {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        if(!name || !email || !password) {
+        if (!validateEmail(email) && (name) && (password)) {
+            setError('Invalid email')
+        } else if(!name || !email || !password) {
             setError("All fields are necessary")
-        }
+        } else {
+            try {
 
-        try {
-
-            const resUserExists = await fetch('api/userExists', {
-                method: "POST",
-                headers: {
-                    "Content-Type":"application/json"
-                },
-                body: JSON.stringify({ email })
-            })
-
-            const {user} = await resUserExists.json()
-
-            if (user) {
-                setError("User already exists")
-                return
-            }
-
-            const res = await fetch('api/register', {
-                method: "POST",
-                headers: {
-                    "Content-Type":"application/json"
-                },
-                body: JSON.stringify({
-                    name, email, password
+                const resUserExists = await fetch('api/userExists', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type":"application/json"
+                    },
+                    body: JSON.stringify({ email })
                 })
-            })
-
-            if (res.ok) {
-                setName("");
-                setEmail("");
-                setPassword("");
-                setError("");
-                router.push('/login')
-            } else {
-                console.log("User registration failed.");
+    
+                const {user} = await resUserExists.json()
+    
+                if (user) {
+                    setError("User already exists")
+                    return
+                }
+    
+                const res = await fetch('api/register', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type":"application/json"
+                    },
+                    body: JSON.stringify({
+                        name, email, password
+                    })
+                })
+    
+                if (res.ok) {
+                    setName("");
+                    setEmail("");
+                    setPassword("");
+                    setError("");
+                    router.push('/login')
+                } else {
+                    console.log("User registration failed.");
+                }
+            } catch (error) {
+                console.log("Error during registration: ", error);
             }
-        } catch (error) {
-            console.log("Error during registration: ", error);
         }
     }
 
@@ -108,7 +111,7 @@ export default function RegisterForm() {
                         fill="currentColor"
                         className="h-4 w-4 opacity-70">
                         <path
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
                         clip-rule="evenodd" />
                     </svg>

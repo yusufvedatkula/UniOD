@@ -192,4 +192,14 @@ export const ValidUniversities = [
   ];
   
 
-  
+export const validateEmail = (email:string) => {
+    // Check if email includes "@" and "."
+    if (email.includes("@") && email.includes(".")) {
+        // Ensure "@" comes before the last "."
+        const atIndex = email.indexOf("@");
+        const dotIndex = email.lastIndexOf(".");
+        return atIndex < dotIndex && dotIndex < email.length - 1;
+    }
+        return false;
+}
+
