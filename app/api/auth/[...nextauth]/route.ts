@@ -1,6 +1,7 @@
-
 import NextAuth from "next-auth";
 import { authOptions } from "@/util/authOptions";
+
+console.log("Auth route initialized");
 
 const handler = NextAuth(authOptions);
 

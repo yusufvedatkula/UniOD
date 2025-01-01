@@ -4,18 +4,15 @@ import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
     try {
-        // Validate content type
+        console.log("userExists API called");
+        
         if (req.headers.get('content-type') !== 'application/json') {
-            return NextResponse.json(
-                { error: "Invalid content type" },
-                { status: 400 }
-            );
+            throw new Error('Content type must be application/json');
         }
 
-        // Parse request body
         const { email } = await req.json();
-
-        // Validate email
+        console.log("Checking email:", email);
+        
         if (!email) {
             return NextResponse.json(
                 { error: "Email is required" },
@@ -23,25 +20,19 @@ export async function POST(req: Request) {
             );
         }
 
-        // Connect to MongoDB
         await connectMongoDB();
-        console.error("Connected to MongoDB");
-
-        // Find user
         const user = await User.findOne({ email }).select("_id");
-        console.error("User lookup result:", user);
-
-        // Return response
+        console.log("User found:", !!user);
+        
         return NextResponse.json({
             exists: !!user,
-            userId: user?._id || null,
+            userId: user ? user._id.toString() : null
         });
     } catch (error) {
-        console.error("Error occurred:", error);
-
+        console.error("userExists API error:", error);
         return NextResponse.json(
-            { error: "Failed to check if user exists" },
-            { status: 500, headers: { "Content-Type": "application/json" } }
+            { error: "Error checking if user exists" },
+            { status: 500 }
         );
     }
 }

@@ -36,6 +36,7 @@ export default function RegisterForm() {
 
         try {
             // Check if user exists
+            console.log("Checking if user exists...");
             const resUserExists = await fetch(`${baseURL}/api/userExists`, {
                 method: "POST",
                 headers: {
@@ -44,15 +45,11 @@ export default function RegisterForm() {
                 body: JSON.stringify({ email })
             });
 
-            if (!resUserExists.ok) {
-                const errorText = await resUserExists.text();
-                console.error("User exists API error:", errorText);
-                setError("Server error while checking email.");
-                return;
-            }
+            console.log("User exists response status:", resUserExists.status);
+            const data = await resUserExists.json();
+            console.log("User exists response data:", data);
 
-            const { user } = await resUserExists.json();
-            if (user) {
+            if (data.exists) {
                 setError("User already exists");
                 return;
             }

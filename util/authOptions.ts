@@ -3,7 +3,6 @@ import User from "@/models/user";
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-
 export const authOptions: NextAuthOptions = {
     providers: [
       CredentialsProvider({
@@ -27,12 +26,16 @@ export const authOptions: NextAuthOptions = {
               return null;
             }
   
-            // Check if the provided password matches the stored password directly
+            // Direct password comparison
             if (password !== user.password) {
               return null;
             }
   
-            return user
+            return {
+              id: user._id.toString(),
+              email: user.email,
+              name: user.name
+            };
           } catch (error) {
             console.error("Error during authorization: ", error);
             throw new Error("Authorization failed");

@@ -19,12 +19,15 @@ export const LoginForm = () => {
 
     if (validateEmail(email)) {
       try {
+        console.log("Attempting to sign in...");
         const res = await signIn("credentials", {
           email,
           password,
           redirect: false,
         });
   
+        console.log("Sign in response:", res);
+
         if (res?.error) {
           setError("Invalid email or password. Try Again!");
           return;
@@ -32,13 +35,11 @@ export const LoginForm = () => {
   
         router.replace("/home");
       } catch (error) {
-        console.log(error);
+        console.error("Sign in error:", error);
       }
-  
     } else {
       setError('Invalid email')
     }
-    
   }
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -112,7 +113,7 @@ export const LoginForm = () => {
                   Caps Lock is ON
               </div>
               )}
-            <button className="btn btn-accent">
+            <button className="btn btn-accent" type="submit">
               Sign In
             </button>
 
