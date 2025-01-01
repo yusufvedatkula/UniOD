@@ -1,10 +1,9 @@
 import { connectMongoDB } from "@/lib/mongodb";
 import User from "@/models/user";
-import NextAuth, { AuthOptions } from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-
-export const authOptions: AuthOptions = {
+export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: "credentials",
@@ -27,12 +26,12 @@ export const authOptions: AuthOptions = {
             return null;
           }
 
-          // Check if the provided password matches the stored password directly
+          // Direct password comparison (plaintext)
           if (password !== user.password) {
             return null;
           }
 
-          return user
+          return user;
         } catch (error) {
           console.error("Error during authorization: ", error);
           throw new Error("Authorization failed");
