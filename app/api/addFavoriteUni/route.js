@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { connectMongoDB } from "@/lib/mongodb";
 import User from "@/models/user";
 import { combineUniData } from "@/util/combineUniData";
-import { authOptions } from "../auth/[...nextauth]/route";
+import { authOptions } from "@/util/authOptions";
 
 export async function POST(req) {
     // Retrieve session data on the server-side using getSession
