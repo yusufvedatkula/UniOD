@@ -15,7 +15,6 @@ export async function GET() {
     try {
         // Connect to MongoDB
         await connectMongoDB();
-
         // Find the user in the database
         const user = await User.findOne({ email: session.user.email });
 

@@ -78,16 +78,11 @@ export const NavbarComponent = () => {
       <div className="navbar-end">
         {session ? (
           <>
-            <span className="mr-4 text-xl font-medium text-slate-200" >
-              <div className="avatar online placeholder"  style={{cursor:"pointer"}}>
-                <div className="bg-neutral text-white w-12 rounded-full">
-                  <span onClick={() => router.push('/myAccount')} 
-                  style={{cursor:"pointer"}}>
-                    {session?.user?.name?.charAt(0)}
-                  </span>
-                </div>
-              </div>
-            </span>
+            <button onClick={() => router.push('/myAccount')} 
+            className="btn bg-gray-200 text-xl text-base-200 hover:text-white hover:bg-base-100"
+            style={{cursor:"pointer"}}>
+              {session?.user?.name}
+            </button>
           </>
         ) : (
           <>

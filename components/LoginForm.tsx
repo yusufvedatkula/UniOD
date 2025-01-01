@@ -10,6 +10,7 @@ export const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [isCapsLock, setIsCapsLock] = useState(false);
 
   const router = useRouter();
 
@@ -39,6 +40,18 @@ export const LoginForm = () => {
     }
     
   }
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.getModifierState("CapsLock")) {
+      setIsCapsLock(true);
+    }
+  };
+
+  const handleKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (!e.getModifierState("CapsLock")) {
+      setIsCapsLock(false);
+    }
+  };
 
     return(
         <div className=" grid place-items-center m-16">
@@ -90,19 +103,25 @@ export const LoginForm = () => {
                 type="password"
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
+                onKeyDown={handleKeyDown}
+                onKeyUp={handleKeyUp}
               />
             </label>
+            {isCapsLock && (
+              <div className="bg-warning text-center text-black w-auto text-base py-1 px-3 rounded-md mt-2">
+                  Caps Lock is ON
+              </div>
+              )}
             <button className="btn btn-accent">
               Sign In
             </button>
 
             {error && (
-            <div className="bg-error text-white w-fit text-sm py-1 px-3 rounded-md mt-2">
+            <div className="w-auto bg-error text-white text-sm py-1 px-3 rounded-md mt-2 text-center">
               {error}
             </div>
           )}
-  
-            <Link className="text-sm mt-3 text-right" href={"/register"}>
+            <Link className="text-sm mt-3 text-slate-300 text-center" href={"/register"}>
                 Dont have an account? <span className="text-info underline">Sign Up</span>
             </Link>
           </form>

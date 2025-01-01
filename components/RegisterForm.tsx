@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { validateEmail } from "@/constants";
+import { validateEmail, validatePassword } from "@/constants";
 
 export default function RegisterForm() {
 
@@ -11,6 +11,7 @@ export default function RegisterForm() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
+    const [isCapsLock, setIsCapsLock] = useState(false);
 
     const router = useRouter()
 
@@ -19,6 +20,8 @@ export default function RegisterForm() {
 
         if (!validateEmail(email) && (name) && (password)) {
             setError('Invalid email')
+        } else if (validateEmail(email) && (name) && !validatePassword(password)) {
+            setError('Password is too weak. Please use a stronger password.')
         } else if(!name || !email || !password) {
             setError("All fields are necessary")
         } else {
@@ -64,8 +67,20 @@ export default function RegisterForm() {
         }
     }
 
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.getModifierState("CapsLock")) {
+            setIsCapsLock(true);
+        }
+    };
+
+    const handleKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (!e.getModifierState("CapsLock")) {
+            setIsCapsLock(false);
+        }
+    };
+
     return (
-        <div className="grid place-items-center m-16 " >
+        <div className="grid place-items-center m-12 " >
             <div className="shadow-lg p-10 rounded-xl border-t-4 border-info" style={{textAlign:"center", backgroundColor:"#222831"}}>
             <h1 className="text-xl font-bold my-4 text-white">Create your UniOD account</h1>
     
@@ -120,8 +135,15 @@ export default function RegisterForm() {
                         type="password"
                         placeholder="Password"
                         onChange={(e) => setPassword(e.target.value)}
+                        onKeyDown={handleKeyDown}
+                        onKeyUp={handleKeyUp}
                     />
                 </label>
+                {isCapsLock && (
+                    <div className="bg-warning text-black w-auto text-base py-1 px-3 rounded-md mt-2">
+                        Caps Lock is ON
+                    </div>
+                )}
                 <button type="submit" className="btn btn-info">
                 Register
                 </button>
@@ -132,9 +154,10 @@ export default function RegisterForm() {
                     </div>
                 )}
     
-                <Link className="text-sm mt-3 text-right" href={"/login"}>
+                <Link className="text-sm mt-3 text-slate-200" href={"/login"}>
                 Already have an account? <span className="text-accent underline">Sign In</span>
                 </Link>
+                <p className="w-64">Password must contain the following: A number, A symbol, Minimum 8 characters</p>
             </form>
             </div>
         </div>

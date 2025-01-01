@@ -203,3 +203,15 @@ export const validateEmail = (email:string) => {
         return false;
 }
 
+export const validatePassword = (password: string) => {
+    // Check if password has at least 8 characters, contains a number, and a symbol
+    const hasMinimumLength = password.length >= 8;
+    const hasNumber = /\d/.test(password);
+    const hasSymbol = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+    
+    if (hasMinimumLength && hasNumber && hasSymbol) {
+        return true
+    } else {
+        return false
+    }
+}

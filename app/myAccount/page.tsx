@@ -2,6 +2,7 @@
 
 import { useSession } from "next-auth/react";
 import { useState } from "react";
+import { signOut } from "next-auth/react";
 
 export default function AccountPage() {
   const { data: session } = useSession();
@@ -43,6 +44,37 @@ export default function AccountPage() {
         setNewName("");
         setNewPassword("");
         setOldPassword("");
+      } else {
+        setError(data.message || "An error occurred");
+        setSuccess("");
+      }
+    } catch (err) {
+      setError("Something went wrong. Please try again.");
+      setSuccess("");
+    }
+  };
+
+  const deleteAccount = async () => {
+    try {
+      console.log(oldPassword)
+      const res = await fetch("/api/deleteAccount", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          oldPassword
+        }),
+      });
+      const data = await res.json();
+
+      if (res.ok) {
+        setSuccess(data.message || "Account successfully deleted");
+        setError("");
+        setNewName("");
+        setNewPassword("");
+        setOldPassword("");
+        signOut()
       } else {
         setError(data.message || "An error occurred");
         setSuccess("");
@@ -98,6 +130,10 @@ export default function AccountPage() {
               Save
             </button>
 
+            <div onClick={deleteAccount} className="btn btn-error">
+              Delete Account
+            </div>
+
             {error && (
               <div className="bg-red-500
                text-white 
@@ -120,8 +156,17 @@ export default function AccountPage() {
           </form>
         </div>
         <br />
+        <p>New Password must contain the following: A number, A symbol, Minimum 8 characters</p>
         <p>To see the changes, you have to sign out and sign in again</p>
+        <p>To delete account, enter your current password and click delete account button</p>
       </div>
     </div>
   );
 }
+
+
+
+
+
+
+

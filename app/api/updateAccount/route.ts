@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import User from "@/models/user";
 import { authOptions } from "../auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
+import { validatePassword } from "@/constants";
 
 export async function POST(req: Request) {
   try {
@@ -39,6 +40,13 @@ export async function POST(req: Request) {
     if (!newPassword) {
       return NextResponse.json(
         { message: "New password cannot be empty" },
+        { status: 400 }
+      );
+    }
+
+    if (!validatePassword(newPassword)) {
+      return NextResponse.json(
+        { message: "New Password is too weak. Please use a stronger password." },
         { status: 400 }
       );
     }

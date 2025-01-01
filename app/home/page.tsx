@@ -31,7 +31,7 @@ export default function Home() {
         </div>
         
       ) : (
-        <UniTable data={uniData} addFavoriteUniEnabled={true}/>
+        <UniTable data={uniData} addFavoriteUniEnabled={true} removeFavoriteUniEnabled={false}/>
       )}
     </div>
   );
