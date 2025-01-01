@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth/next";
 import { connectMongoDB } from "@/lib/mongodb";
 import User from "@/models/user";
-import { authOptions } from "../auth/[...nextauth]/route";
+import { authOptions } from "@/util/authOptions";
 import { NextResponse } from "next/server"
 
 import { convertEmail } from "@/Email/email";
