@@ -14,8 +14,9 @@ export async function POST(req: Request) {
         return NextResponse.json({message:"user registered"}, {status:200})
     } catch (error) {
         console.error("Error occurred:", error)
-        return NextResponse.json({message: "Error occurred while registering the user"}, 
-            {status: 500}
-        )
+        return NextResponse.json({
+            message: "Error occurred while registering the user",
+            error: error instanceof Error ? error.message : "Unknown error"
+        }, {status: 500})
     }
 }
