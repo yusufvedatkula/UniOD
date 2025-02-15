@@ -89,19 +89,19 @@ export default function AccountPage() {
     <div>
       <div className="grid place-items-center m-16">
         <div
-          className="shadow-lg p-10 rounded-xl border-t-4 border-indigo-500"
-          style={{ textAlign: "center", backgroundColor: "#222831" }}
+          className="shadow-lg p-10 rounded-xl border-t-4 border-indigo-500 bg-base-200"
+          style={{ textAlign: "center"}}
         >
-          <h1 className="text-2xl font-bold my-4 text-white">Account</h1>
+          <h1 className="text-2xl font-bold my-4 text-base-content">Account</h1>
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-3">
             <label htmlFor="newName" className="flex items-center gap-2">
-              <span className="text-slate-200">Name:</span>
-              <span className="text-slate-400">{session?.user?.name}</span>
+              <span className="text-base-content">Name:</span>
+              <span className="text-base-content">{session?.user?.name}</span>
             </label>
             <input
               id="newName"
-              className="input input-bordered grow text-white"
+              className="input input-bordered grow text-base-content"
               type="text"
               placeholder="New Name"
               value={newName}
@@ -110,7 +110,7 @@ export default function AccountPage() {
 
             <input
               id="oldPassword"
-              className="input input-bordered grow text-white"
+              className="input input-bordered grow text-base-content"
               type="password"
               placeholder="Current Password"
               value={oldPassword}
@@ -119,14 +119,14 @@ export default function AccountPage() {
 
             <input
               id="newPassword"
-              className="input input-bordered grow text-white"
+              className="input input-bordered grow text-base-content"
               type="password"
               placeholder="New Password"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
             />
 
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn bg-indigo-500 hover:bg-indigo-500 text-base-content">
               Save
             </button>
 

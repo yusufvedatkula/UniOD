@@ -56,9 +56,8 @@ export const LoginForm = () => {
 
     return(
         <div className=" grid place-items-center m-16">
-        <div className=" p-10 rounded-xl border-t-4 border-accent" 
-        style={{backgroundColor:"#222831"}}>
-          <h1 className="text-xl font-bold my-4 text-white">Sign in to your account</h1>
+        <div className=" p-10 rounded-xl border-t-4 border-accent bg-base-200">
+          <h1 className="text-xl font-bold my-4 text-base-content">Sign in to your account</h1>
   
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <label className="input input-bordered flex items-center gap-2">
@@ -78,7 +77,7 @@ export const LoginForm = () => {
                 0 0 1.5-1.5V6.954Z" />
             </svg>
             <input
-            className="grow text-white"
+            className="grow text-base-content"
               type="text"
               placeholder="Email"
               onChange={(e) => setEmail(e.target.value)}
@@ -91,16 +90,16 @@ export const LoginForm = () => {
                 fill="currentColor"
                 className="h-4 w-4 opacity-70">
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5
                    0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0
                     1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4
                      4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 
                      1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
-                  clip-rule="evenodd" />
+                  clipRule="evenodd" />
               </svg>
               <input
-                className="grow text-white"
+                className="grow text-base-content"
                 type="password"
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
@@ -118,11 +117,11 @@ export const LoginForm = () => {
             </button>
 
             {error && (
-            <div className="w-auto bg-error text-white text-sm py-1 px-3 rounded-md mt-2 text-center">
+            <div className="w-auto bg-error text-base-content text-sm py-1 px-3 rounded-md mt-2 text-center">
               {error}
             </div>
           )}
-            <Link className="text-sm mt-3 text-slate-300 text-center" href={"/register"}>
+            <Link className="text-sm mt-3 text-base-content text-center" href={"/register"}>
                 Dont have an account? <span className="text-info underline">Sign Up</span>
             </Link>
           </form>

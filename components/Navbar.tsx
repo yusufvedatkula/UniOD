@@ -19,7 +19,7 @@ export const NavbarComponent = () => {
       <div className="navbar-start">
         <div className="dropdown">
           <button
-            className="btn btn-ghost btn-circle text-white"
+            className="btn btn-ghost btn-circle text-base-content"
             aria-label="Toggle Menu"
           >
             <svg
@@ -44,7 +44,7 @@ export const NavbarComponent = () => {
           >
             {NAV_LINKS.map((link) => (
               <li key={link.key}>
-                <Link href={link.href} className="text-white">{link.label}</Link>
+                <Link href={link.href} className="text-base-content">{link.label}</Link>
               </li>
             ))}
           <br />
@@ -69,7 +69,7 @@ export const NavbarComponent = () => {
 
       {/* Center: Brand */}
       <div className="navbar-center">
-        <Link href="/" className="btn btn-ghost text-5xl text-white">
+        <Link href="/" className="btn btn-ghost text-5xl text-base-content">
           UniOD
         </Link>
       </div>
@@ -79,7 +79,7 @@ export const NavbarComponent = () => {
         {session ? (
           <>
             <button onClick={() => router.push('/myAccount')} 
-            className="btn bg-gray-200 text-xl text-base-200 hover:text-white hover:bg-base-100"
+            className="btn bg-base-200 text-xl text-base-content"
             style={{cursor:"pointer"}}>
               {session?.user?.name}
             </button>

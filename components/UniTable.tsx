@@ -64,7 +64,7 @@ export const UniTable: React.FC<UniTableProps> = ({ data, addFavoriteUniEnabled,
         <div style={{ margin: '3rem', textAlign: 'center', borderRadius:"1rem"}} >
             <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
                 <div style={{marginBottom: '1rem', marginTop:"1rem"}} className=''>
-                        <input type="text" className="input input-bordered text-slate-100" 
+                        <input type="text" className="input input-bordered text-base-content" 
                         placeholder="Search by University Name" value={searchQuery}
                         style={{ marginRight: '1rem', width: '300px' }}
                         onChange={(e) => setSearchQuery(e.target.value)}
@@ -113,36 +113,36 @@ export const UniTable: React.FC<UniTableProps> = ({ data, addFavoriteUniEnabled,
                 style={{ width: '100%', borderRadius: '0.5rem' }}>
                     <thead>
                         <tr>
-                            <th className='text-xl text-slate-50'>University</th>
-                            <th className='text-xl text-slate-50'>CUG rank</th>
-                            <th className='text-xl text-slate-50'>Guardian rank</th>
-                            <th className='text-xl text-slate-50'>Open Day Dates</th>
-                            <th className='text-xl text-slate-50'>CUG score</th>
-                            <th className='text-xl text-slate-50'>Guardian score</th>
-                            <th className='text-xl text-slate-50'>Satisfied with teaching</th>
-                            <th className='text-xl text-slate-50'>Career After 15 months</th>
-                            <th className='text-xl text-slate-50'>Student Satisfaction</th>
-                            <th className='text-xl text-slate-50'>Research Quality</th>
-                            <th className='text-xl text-slate-50'> Graduate Prospects</th>
-                            <th className='text-xl text-slate-50'>Website</th>
+                            <th className='text-xl text-base-content'>University</th>
+                            <th className='text-xl text-base-content'>CUG rank</th>
+                            <th className='text-xl text-base-content'>Guardian rank</th>
+                            <th className='text-xl text-base-content'>Open Day Dates</th>
+                            <th className='text-xl text-base-content'>CUG score</th>
+                            <th className='text-xl text-base-content'>Guardian score</th>
+                            <th className='text-xl text-base-content'>Satisfied with teaching</th>
+                            <th className='text-xl text-base-content'>Career After 15 months</th>
+                            <th className='text-xl text-base-content'>Student Satisfaction</th>
+                            <th className='text-xl text-base-content'>Research Quality</th>
+                            <th className='text-xl text-base-content'> Graduate Prospects</th>
+                            <th className='text-xl text-base-content'>Website</th>
                         </tr>
                     </thead>
                     <tbody>
                         {filteredData.length > 0 ? (
                             filteredData.map(uni => (
                                 <tr key={uni.uniName}>
-                                    <td className='text-slate-200'>{uni.uniName}</td>
-                                    <td className='text-slate-200'>{uni.CompleteUniversityGuideData?.rank}</td>
-                                    <td className='text-slate-200'>{uni.guardianData?.rank}</td>
-                                    <td className='text-slate-200'>{uni.openDayDate}</td>
-                                    <td className='text-slate-200'>{uni.CompleteUniversityGuideData?.score}</td>
-                                    <td className='text-slate-200'>{uni.guardianData?.score}</td>
-                                    <td className='text-slate-200'>{uni.guardianData?.satisfiedWithTeaching}</td>
-                                    <td className='text-slate-200'>{uni.guardianData?.careerAfter15Months}</td>
-                                    <td className='text-slate-200'>{uni.CompleteUniversityGuideData?.studentSatisfaction}</td>
-                                    <td className='text-slate-200'>{uni.CompleteUniversityGuideData?.researchQuailty}</td>
-                                    <td className='text-slate-200'>{uni.CompleteUniversityGuideData?.graduateProspects}</td>
-                                    <td className='text-slate-200'><a href={uni.website || undefined}>{uni.website}</a></td>
+                                    <td className='text-base-content'>{uni.uniName}</td>
+                                    <td className='text-base-content'>{uni.CompleteUniversityGuideData?.rank}</td>
+                                    <td className='text-base-content'>{uni.guardianData?.rank}</td>
+                                    <td className='text-base-content'>{uni.openDayDate}</td>
+                                    <td className='text-base-content'>{uni.CompleteUniversityGuideData?.score}</td>
+                                    <td className='text-base-content'>{uni.guardianData?.score}</td>
+                                    <td className='text-base-content'>{uni.guardianData?.satisfiedWithTeaching}</td>
+                                    <td className='text-base-content'>{uni.guardianData?.careerAfter15Months}</td>
+                                    <td className='text-base-content'>{uni.CompleteUniversityGuideData?.studentSatisfaction}</td>
+                                    <td className='text-base-content'>{uni.CompleteUniversityGuideData?.researchQuailty}</td>
+                                    <td className='text-base-content'>{uni.CompleteUniversityGuideData?.graduateProspects}</td>
+                                    <td className='text-base-content'><a href={uni.website || undefined}>{uni.website}</a></td>
                                 </tr>
                             ))
                         ) : (

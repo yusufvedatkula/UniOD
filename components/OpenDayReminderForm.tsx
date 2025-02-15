@@ -60,15 +60,14 @@ export const OpenDayReminderForm = () => {
         <div>
             <div className="grid place-items-center m-2" >
                 <div className="shadow-lg pb-5 pl-10 pr-10 
-                rounded-lg border-t-4 border-warning" 
-                style={{backgroundColor:"#222831"}}>
-                <h1 className="text-xl font-bold my-3 text-slate-200">
+                rounded-lg border-t-4 border-warning bg-base-200">
+                <h1 className="text-xl font-bold my-3 text-base-content">
                     Open Day Reminder Form
                 </h1>
         
                 <form onSubmit={handleSubmit} className="flex flex-col gap-3">
                     <input
-                    className="input input-bordered border-warning text-slate-200"
+                    className="input input-bordered border-warning text-base-content"
                     type="text"
                     placeholder="University"
                     onChange={(e) => setUniversity(e.target.value)}
@@ -84,6 +83,7 @@ export const OpenDayReminderForm = () => {
                         />
                     </div>
                     <TimeInput 
+                        className="bg-base-200"
                         defaultValue={new Time(10)}
                         hourCycle={24}
                         onChange={(e) => {
@@ -97,7 +97,7 @@ export const OpenDayReminderForm = () => {
                     </button>
 
                     {error && (
-                    <div className="bg-red-500 text-white w-fit text-sm py-1 px-3 rounded-md mt-2">
+                    <div className="bg-red-500 text-base-content w-fit text-sm py-1 px-3 rounded-md mt-2">
                     {error}
                     </div>
                 )}

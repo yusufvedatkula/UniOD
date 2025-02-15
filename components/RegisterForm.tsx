@@ -96,13 +96,13 @@ export default function RegisterForm() {
 
     return (
         <div className="grid place-items-center m-12">
-            <div className="shadow-lg p-10 rounded-xl border-t-4 border-info" style={{ textAlign: "center", backgroundColor: "#222831" }}>
-                <h1 className="text-xl font-bold my-4 text-white">Create your UniOD account</h1>
+            <div className="shadow-lg p-10 rounded-xl border-t-4 border-info bg-base-200" style={{ textAlign: "center" }}>
+                <h1 className="text-xl font-bold my-4 text-base-content">Create your UniOD account</h1>
 
                 <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
                     <label className="input input-bordered flex items-center gap-2">
                         <input
-                            className="grow text-white"
+                            className="grow text-base-content"
                             type="text"
                             placeholder="Full Name"
                             value={name}
@@ -111,7 +111,7 @@ export default function RegisterForm() {
                     </label>
                     <label className="input input-bordered flex items-center gap-2">
                         <input
-                            className="grow text-white"
+                            className="grow text-base-content"
                             type="text"
                             placeholder="Email"
                             value={email}
@@ -120,7 +120,7 @@ export default function RegisterForm() {
                     </label>
                     <label className="input input-bordered flex items-center gap-2">
                         <input
-                            className="grow text-white"
+                            className="grow text-base-content"
                             type="password"
                             placeholder="Password"
                             value={password}
@@ -138,11 +138,11 @@ export default function RegisterForm() {
                         Register
                     </button>
                     {error && (
-                        <div className="bg-red-500 text-white w-fit text-sm py-1 px-3 rounded-md mt-2">
+                        <div className="bg-red-500 text-base-content w-fit text-sm py-1 px-3 rounded-md mt-2">
                             {error}
                         </div>
                     )}
-                    <Link className="text-sm mt-3 text-slate-200" href={"/login"}>
+                    <Link className="text-sm mt-3 text-base-content" href={"/login"}>
                         Already have an account? <span className="text-accent underline">Sign In</span>
                     </Link>
                     <p className="w-64">Password must contain the following: A number, A symbol, Minimum 8 characters</p>
