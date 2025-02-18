@@ -79,7 +79,7 @@ export const NavbarComponent = () => {
         {session ? (
           <>
             <button onClick={() => router.push('/myAccount')} 
-            className="btn bg-base-200 text-xl text-base-content"
+            className="btn hover:bg-slate-300 hover:text-black bg-slate-200 text-xl text-black"
             style={{cursor:"pointer"}}>
               {session?.user?.name}
             </button>
@@ -88,7 +88,7 @@ export const NavbarComponent = () => {
           <>
             <Link href="/login">
             
-              <button className="btn btn-accent mr-2 py-3 px-4 inline-flex items-center gap-x-2 text-sm">
+              <button className="btn btn-accent py-3 px-4 inline-flex items-center gap-x-2 text-sm">
                 Sign In
                 <svg className="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" 
                 height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" 

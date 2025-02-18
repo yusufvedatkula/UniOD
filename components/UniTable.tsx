@@ -113,6 +113,7 @@ export const UniTable: React.FC<UniTableProps> = ({ data, addFavoriteUniEnabled,
                 style={{ width: '100%', borderRadius: '0.5rem' }}>
                     <thead>
                         <tr>
+                            <th className='text-xl text-base-content'>UCAS Code</th>
                             <th className='text-xl text-base-content'>University</th>
                             <th className='text-xl text-base-content'>CUG rank</th>
                             <th className='text-xl text-base-content'>Guardian rank</th>
@@ -131,6 +132,7 @@ export const UniTable: React.FC<UniTableProps> = ({ data, addFavoriteUniEnabled,
                         {filteredData.length > 0 ? (
                             filteredData.map(uni => (
                                 <tr key={uni.uniName}>
+                                    <td className='text-base-content'>{uni.ucasCode}</td>
                                     <td className='text-base-content'>{uni.uniName}</td>
                                     <td className='text-base-content'>{uni.CompleteUniversityGuideData?.rank}</td>
                                     <td className='text-base-content'>{uni.guardianData?.rank}</td>

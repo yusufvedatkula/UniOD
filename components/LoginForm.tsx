@@ -55,7 +55,7 @@ export const LoginForm = () => {
   };
 
     return(
-        <div className=" grid place-items-center m-16">
+        <div className=" grid place-items-center mt-12">
         <div className=" p-10 rounded-xl border-t-4 border-accent bg-base-200">
           <h1 className="text-xl font-bold my-4 text-base-content">Sign in to your account</h1>
   
@@ -117,7 +117,7 @@ export const LoginForm = () => {
             </button>
 
             {error && (
-            <div className="w-auto bg-error text-base-content text-sm py-1 px-3 rounded-md mt-2 text-center">
+            <div className="w-auto bg-error text-slate-100 text-sm py-1 px-3 rounded-md mt-2 text-center">
               {error}
             </div>
           )}

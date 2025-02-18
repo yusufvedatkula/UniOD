@@ -95,7 +95,7 @@ export default function RegisterForm() {
     };
 
     return (
-        <div className="grid place-items-center m-12">
+        <div className="grid place-items-center mt-12">
             <div className="shadow-lg p-10 rounded-xl border-t-4 border-info bg-base-200" style={{ textAlign: "center" }}>
                 <h1 className="text-xl font-bold my-4 text-base-content">Create your UniOD account</h1>
 
@@ -138,7 +138,7 @@ export default function RegisterForm() {
                         Register
                     </button>
                     {error && (
-                        <div className="bg-red-500 text-base-content w-fit text-sm py-1 px-3 rounded-md mt-2">
+                        <div className="bg-red-500 text-slate-100 w-fit text-sm py-1 px-3 rounded-md mt-2">
                             {error}
                         </div>
                     )}

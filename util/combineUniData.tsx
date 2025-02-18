@@ -17,6 +17,16 @@ const normalizeUniversityName = (name: string): string => {
         standardizedName = "london school of economics";
     }
 
+    if (standardizedName.includes("ucl")) {
+        standardizedName = "ucl"
+    } else if (standardizedName.includes('university college london')) {
+        standardizedName = "ucl"
+    }
+
+    if (standardizedName.includes("edinburgh")) {
+        standardizedName = "edinburgh"
+    }
+
     standardizedName = standardizedName.replace(/university\s+of\s+/ig, '')
     standardizedName = standardizedName.replace(/university/ig, '');
     standardizedName = standardizedName.replace(/london/ig, '')
